@@ -23,4 +23,9 @@ public class PDFContentReader {
 
         return pdfContentBuilder.toString();
     }
+
+    public static String getPDFFirstPageContent(String fileName) throws IOException {
+        PdfReader reader = new PdfReader(fileName);
+        return PdfTextExtractor.getTextFromPage(reader, 1);
+    }
 }
