@@ -8,6 +8,6 @@ import java.util.Comparator;
 public class LengthComparator implements Comparator<KeyphraseRecord<String, Integer>> {
     @Override
     public int compare(KeyphraseRecord<String, Integer> record1, KeyphraseRecord<String, Integer> record2) {
-        return record1.length > record2.length ? -1 : record1.length < record2.length ? +1 : 0;
+        return record1.getLength() > record2.getLength() ? -1 : record1.getLength() < record2.getLength() ? +1 : 0;
     }
 }

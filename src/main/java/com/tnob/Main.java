@@ -67,7 +67,7 @@ public class Main {
         Collections.sort(keyphraseRecords, new LengthComparator());
 
         for (KeyphraseRecord<String, Integer> keyphraseRecord : keyphraseRecords) {
-            System.out.println(keyphraseRecord.input + "," + keyphraseRecord.length + "," + keyphraseRecord.occurrences);
+            System.out.println(keyphraseRecord.getInput() + "," + keyphraseRecord.getLength() + "," + keyphraseRecord.getOccurrences());
         }
 
 

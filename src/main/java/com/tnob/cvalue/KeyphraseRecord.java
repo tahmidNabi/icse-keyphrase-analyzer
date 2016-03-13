@@ -4,24 +4,77 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KeyphraseRecord<String,Integer> implements Comparable<KeyphraseRecord> {
-	public String input;
-	public int occurrences;
-	public int length;
-	public double cValue;
-	public List<Integer> substringIndices = new ArrayList<Integer>();
-	public int nestedOccurrenceFrequency;
-	public int numberOfNestedOccurrence;
-	public boolean isSubstring;
+	private String input;
+	private int occurrences;
+	private int length;
+	private double cValue;
+	private List<Integer> substringIndices;
+	private int nestedOccurrenceFrequency;
+	private int numberOfNestedOccurrence;
+	private boolean substring;
 
 	public KeyphraseRecord(String input, int occurrences, int length) {
 		super();
 		this.input = input;
 		this.occurrences = occurrences;
 		this.length = length;
-		this.isSubstring = false;
+		this.substring = false;
+        this.substringIndices = new ArrayList<Integer>();
+    }
+
+	public String getInput() {
+		return input;
 	}
 
-	@Override
+	public int getOccurrences() {
+		return occurrences;
+	}
+
+	public int getLength() {
+		return length;
+	}
+
+    public void setcValue(double cValue) {
+        this.cValue = cValue;
+    }
+
+    public void setSubstringIndices(List<Integer> substringIndices) {
+        this.substringIndices = substringIndices;
+    }
+
+    public void setNestedOccurrenceFrequency(int nestedOccurrenceFrequency) {
+        this.nestedOccurrenceFrequency = nestedOccurrenceFrequency;
+    }
+
+    public void setNumberOfNestedOccurrence(int numberOfNestedOccurrence) {
+        this.numberOfNestedOccurrence = numberOfNestedOccurrence;
+    }
+
+    public void setSubstring(boolean substring) {
+        this.substring = substring;
+    }
+
+    public double getcValue() {
+        return cValue;
+    }
+
+    public List<Integer> getSubstringIndices() {
+        return substringIndices;
+    }
+
+    public int getNestedOccurrenceFrequency() {
+        return nestedOccurrenceFrequency;
+    }
+
+    public int getNumberOfNestedOccurrence() {
+        return numberOfNestedOccurrence;
+    }
+
+    public boolean isSubstring() {
+        return substring;
+    }
+
+    @Override
 	public int compareTo(KeyphraseRecord arg0) {
 		int compare = this.occurrences > arg0.occurrences ? -1 : this.occurrences < arg0.occurrences ? +1 : 0;
 		//int compare = this.length > arg0.length ? -1 : this.length < arg0.length ? +1 : 0;
