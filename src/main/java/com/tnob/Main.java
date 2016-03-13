@@ -2,11 +2,13 @@ package com.tnob;
 
 import com.tnob.cvalue.KeyphraseFilter;
 import com.tnob.cvalue.KeyphraseRecord;
+import com.tnob.cvalue.LengthComparator;
 import com.tnob.nlp.POSTagger;
 import com.tnob.nlp.SentenceParser;
 import com.tnob.nlp.Tokenizer;
 import com.tnob.pdf.PDFContentReader;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -62,9 +64,12 @@ public class Main {
 
         List<KeyphraseRecord<String, Integer>> keyphraseRecords = keyphraseFilter.applyFilters(taggedAbstract, maxLength);
 
+        Collections.sort(keyphraseRecords, new LengthComparator());
+
         for (KeyphraseRecord<String, Integer> keyphraseRecord : keyphraseRecords) {
-            System.out.println(keyphraseRecord.input + "," + keyphraseRecord.occurrences);
+            System.out.println(keyphraseRecord.input + "," + keyphraseRecord.length + "," + keyphraseRecord.occurrences);
         }
+
 
 
     }
