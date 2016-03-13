@@ -20,6 +20,9 @@ public class KeyphraseRecord<String,Integer> implements Comparable<KeyphraseReco
 		this.length = length;
 		this.substring = false;
         this.substringIndices = new ArrayList<Integer>();
+        this.cValue = 0;
+        this.nestedOccurrenceFrequency = 0;
+        this.numberOfNestedOccurrence = 0;
     }
 
 	public String getInput() {
@@ -38,16 +41,12 @@ public class KeyphraseRecord<String,Integer> implements Comparable<KeyphraseReco
         this.cValue = cValue;
     }
 
-    public void setSubstringIndices(List<Integer> substringIndices) {
-        this.substringIndices = substringIndices;
+    public void increaseNestedOccurrenceFrequency(int newNestedOccurrenceFrequency) {
+        nestedOccurrenceFrequency += newNestedOccurrenceFrequency;
     }
 
-    public void setNestedOccurrenceFrequency(int nestedOccurrenceFrequency) {
-        this.nestedOccurrenceFrequency = nestedOccurrenceFrequency;
-    }
-
-    public void setNumberOfNestedOccurrence(int numberOfNestedOccurrence) {
-        this.numberOfNestedOccurrence = numberOfNestedOccurrence;
+    public void incrementNumberOfNestedOccurrence() {
+        ++numberOfNestedOccurrence;
     }
 
     public void setSubstring(boolean substring) {

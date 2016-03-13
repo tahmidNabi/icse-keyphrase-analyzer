@@ -1,5 +1,6 @@
 package com.tnob;
 
+import com.tnob.cvalue.CValueCalculator;
 import com.tnob.cvalue.KeyphraseFilter;
 import com.tnob.cvalue.KeyphraseRecord;
 import com.tnob.cvalue.LengthComparator;
@@ -8,6 +9,8 @@ import com.tnob.nlp.SentenceParser;
 import com.tnob.nlp.Tokenizer;
 import com.tnob.pdf.PDFContentReader;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.Collections;
 import java.util.List;
 
@@ -66,11 +69,13 @@ public class Main {
 
         Collections.sort(keyphraseRecords, new LengthComparator());
 
-        for (KeyphraseRecord<String, Integer> keyphraseRecord : keyphraseRecords) {
-            System.out.println(keyphraseRecord.getInput() + "," + keyphraseRecord.getLength() + "," + keyphraseRecord.getOccurrences());
+        CValueCalculator.calculateCValue(maxLength[0], keyphraseRecords);
+
+        for (int i = 0; i < keyphraseRecords.size(); i++) {
+            KeyphraseRecord<String, Integer> keyphraseRecord = keyphraseRecords.get(i);
+            String result = keyphraseRecord.getInput() + "," + keyphraseRecord.getcValue();
+            System.out.println(result);
         }
-
-
 
     }
 
